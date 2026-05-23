@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Learn ASL — SignBridge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+  <div class="bg-grid"></div>
+
+  <header class="site-header">
+    <div class="logo">🤟 SignBridge</div>
+    <nav class="nav">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/translator" class="nav-link">Translator</a>
+      <a href="/learn" class="nav-link active">Learn ASL</a>
+    </nav>
+  </header>
+
+  <main class="learn-main">
+
+    <div class="learn-header">
+      <h2 class="learn-title">ASL Learning Hub</h2>
+      <p class="learn-sub">Browse {{ signs|length }} signs. Click any sign to learn more.</p>
+
+      <!-- Search -->
+      <div class="search-wrap">
+        <input type="text" id="searchInput" class="search-input"
+               placeholder="Search signs… (Ctrl+K)"/>
+        <span class="search-icon">🔍</span>
+      </div>
+
+      <!-- Filter tabs -->
+      <div class="filter-tabs">
+        <button class="tab active" data-filter="all">All</button>
+        <button class="tab" data-filter="letters">A–Z Letters</button>
+        <button class="tab" data-filter="words">Common Words</button>
+      </div>
+    </div>
+
+    <!-- Signs grid -->
+    <div class="signs-grid" id="signsGrid">
+      {% for sign in signs %}
+      <div class="sign-card"
+           data-sign="{{ sign }}"
+           data-type="{{ 'letters' if sign|length == 1 else 'words' }}">
+        <div class="sign-symbol">{{ sign[0] }}</div>
+        <div class="sign-name">{{ sign }}</div>
+        <div class="sign-type">{{ 'Letter' if sign|length == 1 else 'Word' }}</div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="no-results" id="noResults" style="display:none;">
+      No signs found for that search.
+    </div>
+
+  </main>
+
+  <!-- Sign detail modal -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <button class="modal-close" id="modalClose">✕</button>
+      <div class="modal-symbol" id="modalSymbol"></div>
+      <h2 class="modal-title" id="modalTitle"></h2>
+      <div class="modal-type" id="modalType"></div>
+      <p class="modal-desc" id="modalDesc"></p>
+      <a href="/translator" class="btn btn-primary">Practice in Translator →</a>
+    </div>
+  </div>
+
+  <script src="/static/js/learn.js"></script>
+</body>
+</html>

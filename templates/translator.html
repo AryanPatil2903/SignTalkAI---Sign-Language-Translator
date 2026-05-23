@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Translator — SignBridge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+  <div class="bg-grid"></div>
+
+  <header class="site-header">
+    <div class="logo">🤟 SignBridge</div>
+    <nav class="nav">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/translator" class="nav-link active">Translator</a>
+      <a href="/learn" class="nav-link">Learn ASL</a>
+    </nav>
+  </header>
+
+  <main class="translator-main">
+
+    <!-- LEFT: Video feed -->
+    <section class="panel camera-panel">
+      <div class="panel-label">LIVE FEED</div>
+
+      <div class="camera-wrapper">
+        <!-- MJPEG stream directly from Flask -->
+        <img id="videoFeed" src="" alt="Camera feed"/>
+        <div class="cam-placeholder" id="camPlaceholder">
+          <div class="placeholder-icon">📷</div>
+          <p>Click Start to begin</p>
+        </div>
+
+        <!-- Status badge -->
+        <div class="detection-badge">
+          <span class="dot" id="detDot"></span>
+          <span id="detText">Offline</span>
+        </div>
+
+        <!-- Sequence progress -->
+        <div class="seq-bar-wrap">
+          <div class="seq-bar" id="seqBar"></div>
+        </div>
+      </div>
+
+      <div class="camera-controls">
+        <button class="btn btn-primary" id="startBtn">▶ Start</button>
+        <button class="btn btn-danger"  id="stopBtn"  disabled>■ Stop</button>
+        <button class="btn btn-secondary" id="clearBtn">✕ Clear</button>
+      </div>
+
+      <!-- Tips -->
+      <div class="tips-box">
+        <div class="tips-label">TIPS</div>
+        <ul class="tips-list">
+          <li>Good lighting helps accuracy</li>
+          <li>Hold each sign for 1–2 seconds</li>
+          <li>Keep hand clearly in frame</li>
+          <li>Blue bar = sequence filling up</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- RIGHT: Results -->
+    <section class="panel result-panel">
+      <div class="panel-label">TRANSLATION OUTPUT</div>
+
+      <!-- Big letter/word display -->
+      <div class="prediction-hero">
+        <div class="prediction-letter" id="predLetter">—</div>
+        <div class="prediction-meta">
+          <span class="meta-label">Last Detected</span>
+          <div class="conf-bar-wrap">
+            <div class="conf-bar" id="confBar"></div>
+          </div>
+          <span class="conf-value" id="confValue">0%</span>
+        </div>
+      </div>
+
+      <!-- Recent signs list -->
+      <div class="recent-section">
+        <div class="section-label">RECENT SIGNS</div>
+        <div class="signs-scroll" id="signsScroll">
+          <span class="signs-empty">No signs detected yet…</span>
+        </div>
+      </div>
+
+      <!-- Sentence builder -->
+      <div class="sentence-section">
+        <div class="section-label">SENTENCE BUILDER</div>
+        <div class="sentence-box" id="sentenceBox">
+          <span class="cursor">_</span>
+        </div>
+        <div class="sentence-controls">
+          <button class="btn btn-small" id="addWordBtn">+ Add Word</button>
+          <button class="btn btn-small" id="addSpaceBtn">Space</button>
+          <button class="btn btn-small btn-danger" id="backBtn">⌫</button>
+          <button class="btn btn-small" id="speakBtn">🔊 Speak</button>
+          <button class="btn btn-small btn-danger" id="clearSentBtn">✕</button>
+        </div>
+      </div>
+
+      <!-- Log -->
+      <div class="log-section">
+        <div class="section-label">DETECTION LOG</div>
+        <ul class="log-list" id="logList">
+          <li class="log-empty">No detections yet…</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="status-bar">
+    <span id="statusText">Ready — press Start to begin.</span>
+    <span id="fpsText">0 FPS</span>
+  </footer>
+
+  <script src="/static/js/translator.js"></script>
+</body>
+</html>

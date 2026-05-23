@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SignBridge — ASL Translator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+  <div class="bg-grid"></div>
+
+  <header class="site-header">
+    <div class="logo">🤟 SignBridge</div>
+    <nav class="nav">
+      <a href="/" class="nav-link active">Home</a>
+      <a href="/translator" class="nav-link">Translator</a>
+      <a href="/learn" class="nav-link">Learn ASL</a>
+    </nav>
+  </header>
+
+  <main class="home-main">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-tag">Accessibility · Real-Time · ASL</div>
+      <h1 class="hero-title">Translate Sign<br/>Language <span class="accent">Live</span></h1>
+      <p class="hero-sub">
+        Point your webcam at your hands. SignBridge detects American Sign
+        Language gestures in real-time and builds spoken sentences for you.
+      </p>
+      <div class="hero-btns">
+        <a href="/translator" class="btn btn-primary btn-lg">Start Translating</a>
+        <a href="/learn" class="btn btn-outline btn-lg">Learn ASL</a>
+      </div>
+    </section>
+
+    <!-- Feature cards -->
+    <section class="features">
+      <div class="feat-card">
+        <div class="feat-icon">📹</div>
+        <h3>Real-Time Detection</h3>
+        <p>Live webcam feed with MediaPipe hand landmark tracking at 30 FPS.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🧠</div>
+        <h3>AI Powered</h3>
+        <p>Deep learning model trained on ASL gestures. Sequence-aware prediction.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📚</div>
+        <h3>250+ Signs</h3>
+        <p>Browse and learn A–Z letters, numbers, and common ASL words.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🔊</div>
+        <h3>Text to Speech</h3>
+        <p>Build sentences from detected signs and hear them spoken aloud.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <span>SignBridge · Built with Flask + MediaPipe + TensorFlow</span>
+  </footer>
+</body>
+</html>

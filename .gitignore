@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+venv/
+.env
+models/*.h5
+models/*.pkl
+models/*.tflite
+src/hand_landmarker.task
+data/
+.vscode/
+.DS_Store
+*.log
