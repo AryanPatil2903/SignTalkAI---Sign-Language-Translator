@@ -4,7 +4,6 @@ A real-time American Sign Language (ASL) letter translator
 built with Flask, OpenCV, and MediaPipe. Detects hand landmarks
 from a webcam stream, classifies the gesture, and builds a
 sentence with text-to-speech output.
-
 ---
 
 ## ✨ Features
